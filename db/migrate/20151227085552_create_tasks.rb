@@ -1,12 +1,12 @@
 class CreateTasks < ActiveRecord::Migration
   def change
     create_table :tasks do |t|
-      t.string :projectname
-      t.string :user
+      t.references :project
+      t.references :user
       t.string :taskname
       t.text :description
-      t.timestamp :timestart
-      t.timestamp :timestart
+      t.datetime :timestart
+      t.datetime :timeend
     end
   end
 end
