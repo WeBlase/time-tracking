@@ -1,7 +1,8 @@
 ActiveAdmin.register Project do
   index do
     column :name
-    end
+    actions
+  end
   form do |f|
     f.inputs "Create Project" do
       f.input :name
