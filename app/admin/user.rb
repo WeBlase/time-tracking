@@ -24,7 +24,11 @@ ActiveAdmin.register User do
       end
     div class: :history do
       user.tasks.each do |task|
-          li "#{task[:timeend].present? ? 'Completed ' : 'in progres '}" "#{task.project.name} #{task.taskname} #{task.description}"
+          if task[:timeend].present?
+            div "#{'Completed: '}" "#{task.task_info}"
+          else
+            div "#{'In Progress: '}" "#{task.task_info}"
+          end
       end
     end
   end
