@@ -1,4 +1,6 @@
 class Task < ActiveRecord::Base
+  validates :taskname, presence: true,
+            length: { minimum: 6 }
   belongs_to :user
   belongs_to :project
   def task_info
