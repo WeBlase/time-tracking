@@ -13,7 +13,7 @@
 
   <% @task.each do |task| %>
       <tr>
-        <td><%= task.user.try(:full_name) %>
+        <td><%= task.user.try(:full_name) %></td>
         <td><%= task.project.try(:name) %></td>
         <td><%= task.taskname %></td>
         <td><%= task.description %></td>
