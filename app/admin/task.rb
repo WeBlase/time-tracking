@@ -12,7 +12,8 @@ ActiveAdmin.register Task do
       column :timestart
       column :timeend
       actions
-    end
+  end
+
   form do |f|
     f.inputs "Create Tasks" do
       f.input :user do |task|

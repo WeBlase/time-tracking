@@ -4,3 +4,10 @@ en:
       show: Show
       destroy: Destroy
       edit: Edit
+      new_task: New task
+      back: Back
+      task_name: Task name
+      description: Description
+      user: User
+      project: Project
+      task_list: Task list

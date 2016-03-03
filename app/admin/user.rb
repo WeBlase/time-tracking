@@ -7,6 +7,7 @@ ActiveAdmin.register User do
     column :last_name
     actions
   end
+
   form do |f|
     f.inputs "Create User" do
       f.input :first_name
@@ -14,6 +15,7 @@ ActiveAdmin.register User do
     end
     f.actions
   end
+
   show do
     attributes_table do
       row :first_name
@@ -22,6 +24,7 @@ ActiveAdmin.register User do
         user.tasks.map(&:taskname).join(', ')
       end
     end
+
     div class: :history do
       user.tasks.each do |task|
         if task[:timeend].present?

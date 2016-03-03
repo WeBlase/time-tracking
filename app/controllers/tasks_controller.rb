@@ -1,20 +1,16 @@
 class TasksController < ApplicationController
 
-  before_filter :find_task, only: [:show, :edit, :update, :destroy]
-  before_filter :find_projects, only: [:new, :edit, :create, :update]
+  before_filter :find_task, except: [:new, :index, :create]
+  before_filter :find_projects, except: [:show, :index, :destroy]
 
   def show
-    find_task
   end
 
   def new
-    find_projects
     @task = Task.new
   end
 
   def edit
-    find_projects
-    find_task
   end
 
   def index
@@ -22,7 +18,6 @@ class TasksController < ApplicationController
   end
 
   def create
-    find_projects
     @task = Task.new(task_params)
     @task.user = User.first
 
@@ -34,9 +29,6 @@ class TasksController < ApplicationController
   end
 
   def update
-    find_projects
-    find_task
-
     if @task && @task.update(task_params)
       redirect_to @task
     else
@@ -45,7 +37,6 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    find_task
     @task.destroy
 
     redirect_to tasks_path

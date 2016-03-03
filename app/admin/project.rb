@@ -6,10 +6,11 @@ ActiveAdmin.register Project do
     column :name
     actions
   end
-    form do |f|
-      f.inputs "Create Project" do
-        f.input :name
-      end
-      f.actions
+
+  form do |f|
+    f.inputs "Create Project" do
+      f.input :name
     end
+    f.actions
+  end
 end
