@@ -24,6 +24,7 @@ class TasksController < ApplicationController
   def create
     find_projects
     @task = Task.new(task_params)
+    @task.user = User.first
 
     if @task.save
       redirect_to @task
