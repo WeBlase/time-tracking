@@ -21,19 +21,13 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user = User.first
 
-    if @task.save
-      redirect_to @task
-    else
-      render 'new'
-    end
+    return redirect_to @task if @task.save
+    render 'new'
   end
 
   def update
-    if @task && @task.update(task_params)
-      redirect_to @task
-    else
-      render 'edit'
-    end
+    return redirect_to if @task && @task.update(task_params)
+    render 'edit'
   end
 
   def destroy

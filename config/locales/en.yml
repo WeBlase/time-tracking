@@ -11,3 +11,5 @@ en:
       user: User
       project: Project
       task_list: Task list
+      completed: 'Completed: %{task_description}'
+      in_progress: 'In Progress: %{task_description}'

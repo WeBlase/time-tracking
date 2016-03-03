@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :tasks
   get 'tasks/index'
 
-  devise_for :user
+  devise_for :users
   get 'persons/profile', as: 'user_root'
   root 'tasks#index'
 
