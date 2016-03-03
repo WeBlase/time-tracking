@@ -1,0 +1,27 @@
+<%= form_for :task, url: tasks_path do |f| %>
+
+    <% if @task.errors.any? %>
+
+        <h2>
+          <%= @task.errors.full_messages.to_sentence %>
+        </h2>
+
+    <% end %>
+
+    <%= f.select :project_id, options_from_collection_for_select(@projects, :id, :name) %>
+
+    <p>
+      <%= f.label :taskname %><br>
+      <%= f.text_field :taskname %>
+    </p>
+
+    <p>
+      <%= f.label :description %><br>
+      <%= f.text_area :description %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+
+<% end %>

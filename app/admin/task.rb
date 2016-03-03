@@ -14,16 +14,16 @@ ActiveAdmin.register Task do
       actions
     end
   form do |f|
-      f.inputs "Create Tasks" do
-        f.input :user do |task|
-          task.user.full_name
-        end
-        f.input :project
-        f.input :taskname
-        f.input :description
-        f.input :timestart
-        f.input :timeend
+    f.inputs "Create Tasks" do
+      f.input :user do |task|
+        task.user.full_name
       end
-        f.actions
+      f.input :project
+      f.input :taskname
+      f.input :description
+      f.input :timestart
+      f.input :timeend
+    end
+    f.actions
   end
 end

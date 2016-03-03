@@ -17,7 +17,7 @@
 
 <p>
   <strong>project</strong>
-  <%= @task.project.try(:name) %>
+  <%= @task.project.name %>
 </p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |

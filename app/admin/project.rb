@@ -8,8 +8,8 @@ ActiveAdmin.register Project do
   end
     form do |f|
       f.inputs "Create Project" do
-          f.input :name
+        f.input :name
       end
-          f.actions
+      f.actions
     end
 end

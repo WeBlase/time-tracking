@@ -1,0 +1,6 @@
+ru:
+  tasks:
+    index:
+      show: Показать
+      destroy: Удалить
+      edit: Редактировать

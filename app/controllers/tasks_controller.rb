@@ -1,17 +1,28 @@
 class TasksController < ApplicationController
+
+  before_filter :find_task, only: [:show, :edit, :update, :destroy]
+  before_filter :find_projects, only: [:new, :edit, :create, :update]
+
   def show
-    @task = Task.find(params[:id])
+    find_task
   end
+
   def new
+    find_projects
     @task = Task.new
   end
+
   def edit
-    @task = Task.find(params[:id])
+    find_projects
+    find_task
   end
+
   def index
     @task = Task.all
   end
+
   def create
+    find_projects
     @task = Task.new(task_params)
 
     if @task.save
@@ -20,23 +31,36 @@ class TasksController < ApplicationController
       render 'new'
     end
   end
-  def update
-    @task = Task.find(params[:id])
 
-    if @task.update(task_params)
+  def update
+    find_projects
+    find_task
+
+    if @task && @task.update(task_params)
       redirect_to @task
     else
       render 'edit'
     end
   end
+
   def destroy
-    @task = Task.find(params[:id])
+    find_task
     @task.destroy
 
     redirect_to tasks_path
   end
+
   private
+
+  def find_projects
+    @projects = Project.all
+  end
+
   def task_params
     params.require(:task).permit(:taskname, :description, :project_id, :user_id)
+  end
+
+  def find_task
+    @task = Task.where(id: params[:id]).first
   end
 end
