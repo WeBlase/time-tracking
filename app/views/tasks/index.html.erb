@@ -1,6 +1,8 @@
-<h1><%= t(:task_list) %></h1>
+<h1><%= t('tasks.index.task_list') %></h1>
 
-<%= link_to t(:new_task), new_task_path %>
+<span><%= t('tasks.index.hello') %><%= current_user.email %></span>
+<p><%= link_to t('tasks.index.new_task'), new_task_path %> |
+<%= link_to t('tasks.index.out'), destroy_user_session_path, :method => :delete %></p>
 
 <table>
   <tr>

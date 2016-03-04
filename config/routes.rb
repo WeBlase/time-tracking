@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   resources :tasks
   get 'tasks/index'
 
-  devise_for :users
-  get 'persons/profile', as: 'user_root'
+  devise_for :users, :controllers => { registrations: 'persons' }
+  get 'persons/profile', as: 'tasks_root'
   root 'tasks#index'
 
   ActiveAdmin.routes(self)
