@@ -1,0 +1,15 @@
+ru:
+  tasks:
+    index:
+      show: Показать
+      destroy: Удалить
+      edit: Редактировать
+      new_task: Новая задача
+      back: Назад
+      task_name: Имя задачи
+      description: Описание
+      user: Пользователь
+      project: Проект
+      task_list: Список задач
+      completed: 'Выполнено: %{task_description}'
+      in_progress: 'В ходе выполнения: %{task_description}'
