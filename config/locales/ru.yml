@@ -13,3 +13,5 @@ ru:
       task_list: Список задач
       completed: 'Выполнено: %{task_description}'
       in_progress: 'В ходе выполнения: %{task_description}'
+      out: Выйти
+      hello: 'Здравствуйте: '

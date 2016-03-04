@@ -10,6 +10,8 @@ en:
       description: Description
       user: User
       project: Project
-      task_list: Task list
+      task_list: Task List
       completed: 'Completed: %{task_description}'
       in_progress: 'In Progress: %{task_description}'
+      out: Out
+      hello: 'Welcome: '
