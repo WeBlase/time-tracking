@@ -1,11 +1,41 @@
-<h1><%= t('tasks.index.task_list') %></h1>
+<!DOCTYPE html>
+<html lang="en">
 
-<span><%= t('tasks.index.hello') %><%= current_user.email %></span>
-<p><%= link_to t('tasks.index.new_task'), new_task_path %> |
-<%= link_to t('tasks.index.out'), destroy_user_session_path, :method => :delete %></p>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4"><h1><%= t('tasks.index.task_list') %></h1></div>
+  <div class="col-md-2 col-md-offset-2"><%= t('tasks.index.hello') %><%= current_user.email %>
+      <%= link_to t('tasks.index.out'), destroy_user_session_path, :method => :delete %></div>
+</div><br />
 
-<table>
-  <tr>
+<div class="container-fluid">
+  <%= form_for @task, url: tasks_path do |f| %>
+      <% if @task.errors.any? %>
+          <div class="row">
+            <div class="col-md-5">
+              <%= @task.errors.full_messages.to_sentence %>
+            </div>
+       <% end %>
+          </div><br/>
+      <div class="row">
+        <div class="col-md-1 col-md-offset-2">
+          <%= f.select :project_id, options_from_collection_for_select(@projects, :id, :name) %>
+        </div>
+
+        <div class="col-md-2">
+          <%= f.text_field :taskname, placeholder: 'Taskname' %>
+        </div>
+        <div class="col-md-4">
+        <%= f.text_field :description, placeholder: 'Description' %>
+        </div>
+        <div class="col-md-1">
+          <%= f.submit %>
+        </div>
+      </div>
+  <% end %>
+</div><br/>
+
+<table class="table table-bordered">
+  <tr class="info">
     <th><%= t(:user) %></th>
     <th><%= t(:project) %></th>
     <th><%= t(:task_name) %></th>
@@ -13,8 +43,8 @@
     <th colspan="3"></th>
   </tr>
 
-  <% @task.each do |task| %>
-      <tr>
+  <% @tasks.each do |task| %>
+      <tr class="active">
         <td><%= task.user.full_name %></td>
         <td><%= task.project.name %></td>
         <td><%= task.taskname %></td>
@@ -27,3 +57,4 @@
       </tr>
   <% end %>
 </table>
+</html>

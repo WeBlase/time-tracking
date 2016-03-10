@@ -1,7 +1,8 @@
 class TasksController < ApplicationController
 
+  before_filter :find_current_user, only: [:index, :create]
   before_filter :find_task, except: [:new, :index, :create]
-  before_filter :find_projects, except: [:show, :index, :destroy]
+  before_filter :find_projects, except: [:show, :destroy]
   before_filter :authenticate_user!
 
   def show
@@ -15,7 +16,7 @@ class TasksController < ApplicationController
   end
 
   def index
-    @task = Task.where(user: current_user)
+    @task = Task.new
   end
 
   def create
@@ -23,7 +24,7 @@ class TasksController < ApplicationController
     @task.user = current_user
 
     return redirect_to @task if @task.save
-    render 'new'
+    render 'index'
   end
 
   def update
@@ -38,6 +39,10 @@ class TasksController < ApplicationController
   end
 
   private
+
+  def find_current_user
+    @tasks = Task.where(user: current_user)
+  end
 
   def find_projects
     @projects = Project.all
