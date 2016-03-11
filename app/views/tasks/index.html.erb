@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+<%= render 'header' %>
 
-<div class="row">
-  <div class="col-md-4 col-md-offset-4"><h1><%= t('tasks.index.task_list') %></h1></div>
-  <div class="col-md-2 col-md-offset-2"><%= t('tasks.index.hello') %><%= current_user.email %>
-      <%= link_to t('tasks.index.out'), destroy_user_session_path, :method => :delete %></div>
-</div><br />
+
 
 <div class="container-fluid">
   <%= form_for @task, url: tasks_path do |f| %>
@@ -21,10 +16,10 @@
           <%= f.select :project_id, options_from_collection_for_select(@projects, :id, :name)%>
         </div>
         <div class="col-md-2">
-          <%= f.text_field :taskname, placeholder: 'Taskname', class: "col-xs-12" %>
+          <%= f.text_field :taskname, placeholder: 'Taskname', class: "width_100" %>
         </div>
         <div class="col-md-4">
-        <%= f.text_field :description, placeholder: 'Description', class: "col-xs-12" %>
+        <%= f.text_field :description, placeholder: 'Description', class: "width_100" %>
         </div>
         <div class="col-md-1">
           <%= f.submit %>
@@ -56,4 +51,3 @@
       </tr>
   <% end %>
 </table>
-</html>
