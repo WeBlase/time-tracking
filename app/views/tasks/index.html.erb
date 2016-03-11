@@ -1,7 +1,5 @@
 <%= render 'header' %>
 
-
-
 <div class="container-fluid">
   <%= form_for @task, url: tasks_path do |f| %>
       <% if @task.errors.any? %>
