@@ -6,15 +6,15 @@
         .col-md-5
           = @task.errors.full_messages.to_sentence
         br
-      .row
-      .col-md-1.col-md-offset-2
-        = f.select :project_id, options_from_collection_for_select(@projects, :id, :name)
-      .col-md-2
-        = f.text_field :taskname, placeholder: 'Taskname', class: "width_100"
-      .col-md-4
-        = f.text_field :description, placeholder: 'Description', class: "width_100"
-      .col-md-1
-        = f.submit
+    .row
+    .col-md-1.col-md-offset-2
+      = f.select :project_id, options_from_collection_for_select(@projects, :id, :name)
+    .col-md-2
+      = f.text_field :taskname, placeholder: 'Taskname', class: "width_100"
+    .col-md-4
+      = f.text_field :description, placeholder: 'Description', class: "width_100"
+    .col-md-1
+      = f.submit
 br
 table.table.table-bordered
   tr.info
@@ -32,5 +32,5 @@ table.table.table-bordered
       td = link_to t(:show), task_path(task)
       td = link_to t(:edit), edit_task_path(task)
       td = link_to t(:destroy), task_path(task),
-                                          method: :delete,
-                                          data: { confirm: 'Are you sure?' }
+              method: :delete,
+              data: { confirm: 'Are you sure?' }
