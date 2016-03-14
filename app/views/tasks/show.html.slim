@@ -1,0 +1,30 @@
+.container-fluid
+  .row
+    .col-md-4.col-md-offset-4
+      h1
+        = t(:show)
+  .row
+    .col-md-4.col-md-offset-4
+      strong
+        = t(:task_name)
+        = @task.taskname
+  .row
+    .col-md-4.col-md-offset-4
+      strong
+        = t(:description)
+        = @task.description
+  .row
+    .col-md-4.col-md-offset-4
+      strong
+        = t(:user)
+        = @task.user.full_name
+  .row
+    .col-md-4.col-md-offset-4
+      strong
+        = t(:project)
+        = @task.project.name
+  .row
+    .col-md-4.col-md-offset-4
+      = link_to t(:edit), edit_task_path(@task)
+      |  | 
+      = link_to t(:back), tasks_path
