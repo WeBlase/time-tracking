@@ -10,9 +10,9 @@
     .col-md-1.col-md-offset-2
       = f.select :project_id, options_from_collection_for_select(@projects, :id, :name)
     .col-md-2
-      = f.text_field :taskname, placeholder: 'Taskname', class: "width_100"
+      = f.text_field :taskname, placeholder: I18n.t('tasks.index.task_name'), class: "width_100"
     .col-md-4
-      = f.text_field :description, placeholder: 'Description', class: "width_100"
+      = f.text_field :description, placeholder: I18n.t('tasks.index.description'), class: "width_100"
     .col-md-1
       = f.submit
 br
