@@ -1,0 +1,14 @@
+= form_for @task do |f|
+  - if @task.errors.any?
+    h2 = @task.errors.full_messages.to_sentence
+    = f.select :project_id, options_from_collection_for_select(@projects, :id, :name)
+  p
+    = f.label :taskname
+    br
+    = f.text_field :taskname
+  p
+    = f.label :description
+    br
+    = f.text_area :description
+  p
+    = f.submit
