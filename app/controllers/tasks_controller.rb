@@ -22,12 +22,16 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.user = current_user
+    @task.timestart = Time.zone.now
 
     return redirect_to @task if @task.save
     render 'index'
   end
 
   def update
+
+
+
     return redirect_to if @task && @task.update(task_params)
     render 'edit'
   end
@@ -49,7 +53,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:taskname, :description, :project_id, :user_id)
+    params.require(:task).permit(:taskname, :description, :project_id, :user_id, :timeend)
   end
 
   def find_task
