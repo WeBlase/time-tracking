@@ -34,7 +34,8 @@ table.table.table-bordered
       td = task.description
       td = task.timestart.strftime('%d.%m.%Y %H:%M') if task.timestart.present?
       td = task.timeend.strftime('%d.%m.%Y %H:%M') if task.timeend.present?
-      td = form_for :task_id, url: task_path(task) do |f|
+      td = form_for task do |f|
+        = hidden_field_tag :update_timeend, 1
         = f.submit
       td = link_to t(:show), task_path(task)
       td = link_to t(:edit), edit_task_path(task)

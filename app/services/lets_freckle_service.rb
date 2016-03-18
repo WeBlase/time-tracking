@@ -8,7 +8,7 @@ class LetsFreckleService
     end
   end
 
-  def send(time, project, description)
+  def send(project, time, description)
     LetsFreckle::Entry.create(:project_id => project, :minutes => time, :description => description)
   end
 end

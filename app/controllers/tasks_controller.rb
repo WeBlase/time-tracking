@@ -29,16 +29,16 @@ class TasksController < ApplicationController
   end
 
   def update
-
-
-
-    return redirect_to if @task && @task.update(task_params)
-    render 'edit'
+    if params[:update_timeend].present?
+      close_task
+    else
+      return render 'edit' unless @task && @task.update(task_params)
+    end
+    redirect_to tasks_path
   end
 
   def destroy
     @task.destroy
-
     redirect_to tasks_path
   end
 
@@ -53,10 +53,14 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:taskname, :description, :project_id, :user_id, :timeend)
+    params.require(:task).permit(:taskname, :description, :project_id, :user_id)
   end
 
   def find_task
     @task = Task.where(id: params[:id]).first
+  end
+
+  def close_task
+    @task.update(timeend: Time.zone.now)
   end
 end
